@@ -68,7 +68,7 @@ func openapiFiles(r *expr.RootExpr) (*codegen.File, *codegen.File, error) {
 }
 
 func toJSON(d interface{}) string {
-	b, err := json.Marshal(d)
+	b, err := json.MarshalIndent(d, "  ", "  ")
 	if err != nil {
 		panic("openapi: " + err.Error()) // bug
 	}

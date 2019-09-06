@@ -1,0 +1,18 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "test api",
+      "description": "an api to test openapi3",
+      "termsOfService": "https://example.com/tos",
+      "contact": {
+        "email": "test@test.com",
+        "name": "name",
+        "url": "https://example.com"
+      },
+      "license": {
+        "name": "license",
+        "url": "https://example.com/license"
+      }
+    },
+    "components": {}
+  }
