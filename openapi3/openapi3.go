@@ -2,6 +2,7 @@ package openapi3
 
 import (
 	"fmt"
+	"strconv"
 
 	"github.com/getkin/kin-openapi/openapi3"
 	"goa.design/goa/v3/codegen"
@@ -108,6 +109,9 @@ func operation(s *expr.HTTPServiceExpr, e *expr.HTTPEndpointExpr, r *expr.RouteE
 	// params = append(params, paramsFromHeaders(e)...)
 
 	responses := map[string]*openapi3.ResponseRef{}
+	for _, r := range e.Responses {
+		responses[strconv.Itoa(r.StatusCode)] = response(r)
+	}
 
 	return &openapi3.Operation{
 		OperationID: fmt.Sprintf("%s#%s", s.Name(), e.Name()),
@@ -160,4 +164,16 @@ func paramFor(at *expr.AttributeExpr, name, in string, required bool) *openapi3.
 	}
 
 	return p
+}
+
+func response(r *expr.HTTPResponseExpr) *openapi3.ResponseRef {
+	content := openapi3.Content{}
+	content[r.ContentType] = &openapi3.MediaType{}
+
+	return &openapi3.ResponseRef{
+		Value: &openapi3.Response{
+			Description: r.Description,
+			Content:     content,
+		},
+	}
 }

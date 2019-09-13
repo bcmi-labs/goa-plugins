@@ -40,7 +40,14 @@
               "name": "b",
               "required": true
             }
-          ]
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "": {}
+              }
+            }
+          }
         }
       }
     },
