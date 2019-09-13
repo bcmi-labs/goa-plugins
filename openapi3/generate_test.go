@@ -23,7 +23,7 @@ func TestOpenAPI3(t *testing.T) {
 		Name string
 		DSL  func()
 	}{
-		{"full-dsl", testdata.FullDSL},
+		{"basic-dsl", testdata.BasicDSL},
 	}
 	for _, c := range cases {
 		t.Run(c.Name, func(t *testing.T) {

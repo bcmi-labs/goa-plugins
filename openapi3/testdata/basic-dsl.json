@@ -1,0 +1,48 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Calculator Service",
+      "description": "HTTP service for adding numbers, a goa teaser",
+      "version": "unversioned"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:8000/calc",
+        "description": "Development hosts."
+      },
+      {
+        "url": "grpc://localhost:8080",
+        "description": "Development hosts."
+      },
+      {
+        "url": "https://{version}.goa.design/calc",
+        "description": "Production hosts."
+      },
+      {
+        "url": "grpcs://{version}.goa.design",
+        "description": "Production hosts."
+      }
+    ],
+    "paths": {
+      "/add/{a}/{b}": {
+        "get": {
+          "operationId": "calc#add",
+          "parameters": [
+            {
+              "description": "Left operand",
+              "in": "path",
+              "name": "a",
+              "required": true
+            },
+            {
+              "description": "Right operand",
+              "in": "path",
+              "name": "b",
+              "required": true
+            }
+          ]
+        }
+      }
+    },
+    "components": {}
+  }
